@@ -1,0 +1,108 @@
+<!-- aplicacion_fisica/templates/aplicacion_fisica/leyes_newton.html -->
+{% extends 'aplicacion_fisica/index.html' %}
+
+{% block content %}
+    <h2>Leyes de Newton</h2>
+    <p>
+        Las leyes de Newton son tres principios fundamentales que describen el movimiento de los cuerpos. Fueron formuladas por Sir Isaac Newton y constituyen la base de la mecánica clásica.
+    </p>
+
+    <!-- Ley de Newton I -->
+    <div class="ley-newton">
+        <h3>Ley de Newton I - Ley de la inercia</h3>
+        <p>
+            <strong>Enunciado:</strong> Un cuerpo permanecerá en reposo o en movimiento rectilíneo uniforme a menos que una fuerza neta actúe sobre él.
+        </p>
+        <!-- Calculadora para Ley de Newton I -->
+        <div class="calculadora-ley">
+            <h4>Calculadora para Ley de Newton I</h4>
+            <form id="ley_newton_i_form">
+                {% csrf_token %}
+                <label for="fuerza_neta_ley_newton_i">Fuerza Neta (N):</label>
+                <input type="text" id="fuerza_neta_ley_newton_i" name="fuerza_neta_ley_newton_i" required>
+
+                <label for="masa_ley_newton_i">Masa (kg):</label>
+                <input type="text" id="masa_ley_newton_i" name="masa_ley_newton_i" required>
+
+                <button type="button" onclick="calcularLeyNewtonI()">Calcular</button>
+            </form>
+            <h4>RESULTADO:</h4>
+            <p id="resultado_ley_newton_i">Aceleración (\(a\)): </p>
+        </div>
+    </div>
+
+    <!-- Ley de Newton II -->
+    <div class="ley-newton">
+        <h3>Ley de Newton II - Ley de la fuerza y la aceleración</h3>
+        <p>
+            <strong>Enunciado:</strong> La aceleración de un objeto es directamente proporcional a la fuerza neta que actúa sobre él e inversamente proporcional a su masa. La dirección de la aceleración es la misma que la dirección de la fuerza neta.
+        </p>
+        <!-- Calculadora para Ley de Newton II -->
+        <div class="calculadora-ley">
+            <h4>Calculadora para Ley de Newton II</h4>
+            <form id="ley_newton_ii_form">
+                {% csrf_token %}
+                <label for="fuerza_neta_ley_newton_ii">Fuerza Neta (N):</label>
+                <input type="text" id="fuerza_neta_ley_newton_ii" name="fuerza_neta_ley_newton_ii" required>
+
+                <label for="masa_ley_newton_ii">Masa (kg):</label>
+                <input type="text" id="masa_ley_newton_ii" name="masa_ley_newton_ii" required>
+
+                <button type="button" onclick="calcularLeyNewtonII()">Calcular</button>
+            </form>
+            <h4>RESULTADO:</h4>
+            <p id="resultado_ley_newton_ii">Aceleración (\(a\)): </p>
+        </div>
+    </div>
+
+    <!-- Ley de Newton III -->
+    <div class="ley-newton">
+        <h3>Ley de Newton III - Ley de acción y reacción</h3>
+        <p>
+            <strong>Enunciado:</strong> Por cada acción, hay una reacción de igual magnitud pero en dirección opuesta.
+        </p>
+        <!-- Calculadora para Ley de Newton III -->
+        <div class="calculadora-ley">
+            <h4>Calculadora para Ley de Newton III</h4>
+            <form id="ley_newton_iii_form">
+                {% csrf_token %}
+                <label for="fuerza_accion_ley_newton_iii">Fuerza de Acción (N):</label>
+                <input type="text" id="fuerza_accion_ley_newton_iii" name="fuerza_accion_ley_newton_iii" required>
+
+                <button type="button" onclick="calcularLeyNewtonIII()">Calcular</button>
+            </form>
+            <h4>RESULTADO:</h4>
+            <p id="resultado_ley_newton_iii">Fuerza de Reacción (\(F_{\text{reacción}}\)): </p>
+        </div>
+    </div>
+
+    <!-- Agrega aquí cualquier otra sección o descripción que desees -->
+
+    <script>
+        function calcularLeyNewtonI() {
+            var fuerza_neta_ley_newton_i = parseFloat(document.getElementById('fuerza_neta_ley_newton_i').value);
+            var masa_ley_newton_i = parseFloat(document.getElementById('masa_ley_newton_i').value);
+
+            var aceleracion_ley_newton_i = fuerza_neta_ley_newton_i / masa_ley_newton_i;
+
+            document.getElementById('resultado_ley_newton_i').innerText = 'Aceleración (\(a\)): ' + aceleracion_ley_newton_i.toFixed(2) + ' m/s²';
+        }
+
+        function calcularLeyNewtonII() {
+            var fuerza_neta_ley_newton_ii = parseFloat(document.getElementById('fuerza_neta_ley_newton_ii').value);
+            var masa_ley_newton_ii = parseFloat(document.getElementById('masa_ley_newton_ii').value);
+
+            var aceleracion_ley_newton_ii = fuerza_neta_ley_newton_ii / masa_ley_newton_ii;
+
+            document.getElementById('resultado_ley_newton_ii').innerText = 'Aceleración (\(a\)): ' + aceleracion_ley_newton_ii.toFixed(2) + ' m/s²';
+        }
+
+        function calcularLeyNewtonIII() {
+            var fuerza_accion_ley_newton_iii = parseFloat(document.getElementById('fuerza_accion_ley_newton_iii').value);
+
+            document.getElementById('resultado_ley_newton_iii').innerText = 'Fuerza de Reacción (\(F_{\text{reacción}}\)): ' + fuerza_accion_ley_newton_iii.toFixed(2) + ' N';
+        }
+    </script>
+
+{% endblock %}
+
