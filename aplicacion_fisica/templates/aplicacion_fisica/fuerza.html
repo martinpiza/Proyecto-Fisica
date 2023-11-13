@@ -11,7 +11,7 @@
     <!-- Calculadora de Fuerza -->
     <div class="calculadora-fuerza">
         <h3>Calculadora de Fuerza (\(F\))</h3>
-        <form id="calculo_fuerza_form">
+        <form id="calculo_fuerza_form" onsubmit="calcularFuerza(); return false;">
             {% csrf_token %}
             <label for="masa_fuerza">Masa (kg):</label>
             <input type="text" id="masa_fuerza" name="masa_fuerza" required>
@@ -19,7 +19,7 @@
             <label for="aceleracion_fuerza">Aceleración (\(a\)): </label>
             <input type="text" id="aceleracion_fuerza" name="aceleracion_fuerza" required>
 
-            <button type="button" onclick="calcularFuerza()">Calcular</button>
+            <button type="submit">Calcular</button>
         </form>
         <h4>RESULTADO:</h4>
         <p id="resultado_fuerza">Fuerza (\(F\)): </p>
@@ -37,3 +37,4 @@
     </script>
 
 {% endblock %}
+
