@@ -2,138 +2,243 @@
 {% extends 'aplicacion_fisica/index.html' %}
 
 {% block content %}
-    <h2>Movimiento Circular Uniforme</h2>
-    <p>
-        El movimiento circular uniforme (MCU) se caracteriza por una trayectoria circular en la que un objeto se mueve con una velocidad constante.
-        En este contexto, la velocidad tangencial es constante, pero la dirección cambia constantemente, dando lugar a un movimiento circular.
-    </p>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Calculadoras de Movimiento Circular Uniforme (MCU)</title>
+</head>
+<body>
 
-    <!-- Calculadora de Velocidad Lineal -->
-    <div class="calculadora-mcu">
-        <h3>Calculadora de Velocidad Lineal (\(v\))</h3>
-        <form id="calculo_v_form">
-            {% csrf_token %}
-            <label for="radio_v">Radio (m):</label>
-            <input type="text" id="radio_v" name="radio_v" required>
+  <h1>Calculadoras de Movimiento Circular Uniforme (MCU)</h1>
+  <p>El Movimiento Circular Uniforme (MCU) es un tipo de movimiento en el cual un objeto se desplaza en una trayectoria circular con velocidad constante.</p>
 
-            <label for="velocidad_angular_v">Velocidad Angular (\(\omega\)): </label>
-            <input type="text" id="velocidad_angular_v" name="velocidad_angular_v" required>
+  <!-- Calculadora del Radio -->
+  <section>
+    <h2>Calculadora del Radio (r)</h2>
+    <p>Calcula el radio de la trayectoria circular en función de la velocidad lineal y angular.</p>
+    <p>r = v/w</p>
+    <label for="velocidad-lineal-radio">Velocidad Lineal (en m/s): </label>
+    <input type="number" id="velocidad-lineal-radio" step="any">
+    <br>
+    <label for="velocidad-angular-radio">Velocidad Angular (en radianes por segundo): </label>
+    <input type="number" id="velocidad-angular-radio" step="any">
+    <br>
+    <button onclick="calcularRadio()">Calcular</button>
+    <p id="resultado-radio"></p>
+  </section>
 
-            <button type="button" onclick="calcularVelocidadLineal()">Calcular</button>
-        </form>
-        <h4>RESULTADO:</h4>
-        <p id="resultado_v">Velocidad Lineal (\(v\)): </p>
-    </div>
+  <!-- Calculadora de Velocidad Lineal -->
+  <section>
+    <h2>Calculadora de Velocidad Lineal (v)</h2>
+    <p>Calcula la velocidad lineal en función del radio y la velocidad angular.</p>
+    <p>v = w * r</p>
+    <label for="radio-velocidad">Radio (en metros): </label>
+    <input type="number" id="radio-velocidad" step="any">
+    <br>
+    <label for="velocidad-angular-velocidad">Velocidad Angular (en radianes por segundo): </label>
+    <input type="number" id="velocidad-angular-velocidad" step="any">
+    <br>
+    <button onclick="calcularVelocidadLineal()">Calcular</button>
+    <p id="resultado-velocidad"></p>
+  </section>
 
-    <!-- Calculadora de Velocidad Angular -->
-    <div class="calculadora-mcu">
-        <h3>Calculadora de Velocidad Angular (\(\omega\))</h3>
-        <form id="calculo_omega_form">
-            {% csrf_token %}
-            <label for="radio_omega">Radio (m):</label>
-            <input type="text" id="radio_omega" name="radio_omega" required>
+  <!-- Calculadora de Aceleración Centrípeta -->
+  <section>
+    <h2>Calculadora de Aceleración Centrípeta (ac)</h2>
+    <p>Calcula la aceleración centrípeta en función de la velocidad lineal y el radio.</p>
+    <p>ac = v^2 * r</p>
+    <label for="velocidad-lineal-aceleracion">Velocidad Lineal (en m/s): </label>
+    <input type="number" id="velocidad-lineal-aceleracion" step="any">
+    <br>
+    <label for="radio-aceleracion">Radio (en metros): </label>
+    <input type="number" id="radio-aceleracion" step="any">
+    <br>
+    <button onclick="calcularAceleracionCentripeta()">Calcular</button>
+    <p id="resultado-aceleracion"></p>
+  </section>
 
-            <label for="periodo_omega">Periodo (s):</label>
-            <input type="text" id="periodo_omega" name="periodo_omega" required>
+  <!-- Calculadora de Fuerza Centrípeta -->
+  <section>
+    <h2>Calculadora de Fuerza Centrípeta (Fc)</h2>
+    <p>Calcula la fuerza centrípeta en función de la masa, la velocidad angular y el radio.</p>
+    <p>Fc = m * v^2/r</p>
+    <label for="masa-fuerza">Masa (en kg): </label>
+    <input type="number" id="masa-fuerza" step="any">
+    <br>
+    <label for="radio-fuerza">Radio (en metros): </label>
+    <input type="number" id="radio-fuerza" step="any">
+    <br>
+    <button onclick="calcularFuerzaCentripeta()">Calcular</button>
+    <p id="resultado-fuerza"></p>
+  </section>
 
-            <button type="button" onclick="calcularVelocidadAngular()">Calcular</button>
-        </form>
-        <h4>RESULTADO:</h4>
-        <p id="resultado_omega">Velocidad Angular (\(\omega\)): </p>
-    </div>
+  <!-- Calculadora de Período y Frecuencia -->
+  <section>
+    <h2>Calculadora de Período (T) y Frecuencia (f)</h2>
+    <p>Calcula el período y la frecuencia en función de la velocidad angular.</p>
+    <p>T = 1/w</p>
+    <p>f = w/2π</p>
+    <label for="velocidad-angular-periodo">Velocidad Angular (en radianes por segundo): </label>
+    <input type="number" id="velocidad-angular-periodo" step="any">
+    <br>
+    <button onclick="calcularPeriodoFrecuencia()">Calcular</button>
+    <p id="resultado-periodo"></p>
+    <p id="resultado-frecuencia"></p>
+  </section>
 
-    <!-- Calculadora de Periodo y Frecuencia -->
-    <div class="calculadora-mcu">
-        <h3>Calculadora de Periodo y Frecuencia</h3>
-        <form id="calculo_frecuencia_form">
-            {% csrf_token %}
-            <label for="periodo_frecuencia">Periodo (s):</label>
-            <input type="text" id="periodo_frecuencia" name="periodo_frecuencia" required>
+  <!-- Calculadora de Velocidad Angular -->
+  <section>
+    <h2>Calculadora de Velocidad Angular (w)</h2>
+    <p>Calcula la velocidad angular en función de la velocidad lineal y el radio.</p>
+    <p>w = v/r</p>
+    <label for="velocidad-lineal-angular">Velocidad Lineal (en m/s): </label>
+    <input type="number" id="velocidad-lineal-angular" step="any">
+    <br>
+    <label for="radio-angular">Radio (en metros): </label>
+    <input type="number" id="radio-angular" step="any">
+    <br>
+    <button onclick="calcularVelocidadAngular()">Calcular</button>
+    <p id="resultado-angular"></p>
+  </section>
 
-            <button type="button" onclick="calcularFrecuencia()">Calcular</button>
-        </form>
-        <h4>RESULTADO:</h4>
-        <p id="resultado_frecuencia">Frecuencia (\(f\)): </p>
-    </div>
+  <!-- Calculadora de Desplazamiento Angular -->
+  <section>
+    <h2>Calculadora de Desplazamiento Angular (θ)</h2>
+    <p>Calcula el desplazamiento angular en función de la velocidad angular y el tiempo.</p>
+    <p>θ = w/t</p>
+    <label for="velocidad-angular-desplazamiento">Velocidad Angular (en radianes por segundo): </label>
+    <input type="number" id="velocidad-angular-desplazamiento" step="any">
+    <br>
+    <label for="tiempo-desplazamiento">Tiempo (en segundos): </label>
+    <input type="number" id="tiempo-desplazamiento" step="any">
+    <br>
+    <button onclick="calcularDesplazamientoAngular()">Calcular</button>
+    <p id="resultado-desplazamiento"></p>
+  </section>
 
-    <!-- Calculadora de Aceleración Centrípeta -->
-    <div class="calculadora-mcu">
-        <h3>Calculadora de Aceleración Centrípeta (\(a_c\))</h3>
-        <form id="calculo_ac_form">
-            {% csrf_token %}
-            <label for="radio_ac">Radio (m):</label>
-            <input type="text" id="radio_ac" name="radio_ac" required>
+  <!-- Relación entre Velocidad Angular y Velocidad Lineal -->
+  <section>
+    <h2>Relación entre Velocidad Angular y Velocidad Lineal</h2>
+    <p>Calcula la relación entre la velocidad angular y la velocidad lineal en función del radio.</p>
+    <p>v = w/r</p>
+    <label for="radio-relacion">Radio (en metros): </label>
+    <input type="number" id="radio-relacion" step="any">
+    <br>
+    <label for="velocidad-angular-relacion">Velocidad Angular (en radianes por segundo): </label>
+    <input type="number" id="velocidad-angular-relacion" step="any">
+    <br>
+    <button onclick="calcularRelacionVelocidades()">Calcular</button>
+    <p id="resultado-relacion"></p>
+  </section>
 
-            <label for="velocidad_ac">Velocidad Lineal (\(v\)): </label>
-            <input type="text" id="velocidad_ac" name="velocidad_ac" required>
+  <!-- Circunferencia y Longitud de Arco -->
+  <section>
+    <h2>Circunferencia y Longitud de Arco</h2>
+    <p>Calcula la circunferencia y la longitud de arco en función del radio y el ángulo.</p>
+    <p>C = 2πr</p>
+    <p>s = r * θ</p>
+    <label for="radio-circunferencia">Radio (en metros): </label>
+    <input type="number" id="radio-circunferencia" step="any">
+    <br>
+    <label for="angulo-circunferencia">Ángulo (en radianes): </label>
+    <input type="number" id="angulo-circunferencia" step="any">
+    <br>
+    <button onclick="calcularCircunferenciaLongitudArco()">Calcular</button>
+    <p id="resultado-circunferencia"></p>
+    <p id="resultado-longitud-arco"></p>
+  </section>
 
-            <button type="button" onclick="calcularAceleracionCentripeta()">Calcular</button>
-        </form>
-        <h4>RESULTADO:</h4>
-        <p id="resultado_ac">Aceleración Centrípeta (\(a_c\)): </p>
-    </div>
+  <script>
+    function calcularRadio() {
+        var velocidadLineal = parseFloat(document.getElementById('velocidad-lineal-radio').value);
+        var velocidadAngular = parseFloat(document.getElementById('velocidad-angular-radio').value);
+  
+        var radio = velocidadLineal / velocidadAngular;
+  
+        document.getElementById('resultado-radio').textContent = 'Radio: ' + radio.toFixed(2) + ' metros';
+      }
+  
+      function calcularVelocidadLineal() {
+        var radio = parseFloat(document.getElementById('radio-velocidad').value);
+        var velocidadAngular = parseFloat(document.getElementById('velocidad-angular-velocidad').value);
+  
+        var velocidadLineal = radio * velocidadAngular;
+  
+        document.getElementById('resultado-velocidad').textContent = 'Velocidad Lineal: ' + velocidadLineal.toFixed(2) + ' m/s';
+      }
+  
+      function calcularAceleracionCentripeta() {
+        var velocidadLineal = parseFloat(document.getElementById('velocidad-lineal-aceleracion').value);
+        var radio = parseFloat(document.getElementById('radio-aceleracion').value);
+  
+        var aceleracionCentripeta = Math.pow(velocidadLineal, 2) / radio;
+  
+        document.getElementById('resultado-aceleracion').textContent = 'Aceleración Centrípeta: ' + aceleracionCentripeta.toFixed(2) + ' m/s²';
+      }
+  
+      function calcularFuerzaCentripeta() {
+        var masa = parseFloat(document.getElementById('masa-fuerza').value);
+        var radio = parseFloat(document.getElementById('radio-fuerza').value);
+  
+        var fuerzaCentripeta = masa * Math.pow(2 * Math.PI, 2) * radio;
+  
+        document.getElementById('resultado-fuerza').textContent = 'Fuerza Centrípeta: ' + fuerzaCentripeta.toFixed(2) + ' Newtons';
+      }
+  
+      function calcularPeriodoFrecuencia() {
+        var velocidadAngular = parseFloat(document.getElementById('velocidad-angular-periodo').value);
+  
+        var periodo = 1 / velocidadAngular;
+        var frecuencia = velocidadAngular / (2 * Math.PI);
+  
+        document.getElementById('resultado-periodo').textContent = 'Período: ' + periodo.toFixed(2) + ' segundos';
+        document.getElementById('resultado-frecuencia').textContent = 'Frecuencia: ' + frecuencia.toFixed(2) + ' Hz';
+      }
+  
+      function calcularVelocidadAngular() {
+        var velocidadLineal = parseFloat(document.getElementById('velocidad-lineal-angular').value);
+        var radio = parseFloat(document.getElementById('radio-angular').value);
+  
+        var velocidadAngular = velocidadLineal / radio;
+  
+        document.getElementById('resultado-angular').textContent = 'Velocidad Angular: ' + velocidadAngular.toFixed(2) + ' rad/s';
+      }
+  
+      function calcularDesplazamientoAngular() {
+        var velocidadAngular = parseFloat(document.getElementById('velocidad-angular-desplazamiento').value);
+        var tiempo = parseFloat(document.getElementById('tiempo-desplazamiento').value);
+  
+        var desplazamientoAngular = velocidadAngular * tiempo;
+  
+        document.getElementById('resultado-desplazamiento').textContent = 'Desplazamiento Angular: ' + desplazamientoAngular.toFixed(2) + ' rad';
+      }
+  
+      function calcularRelacionVelocidades() {
+        var radio = parseFloat(document.getElementById('radio-relacion').value);
+        var velocidadAngular = parseFloat(document.getElementById('velocidad-angular-relacion').value);
+  
+        var relacionVelocidades = radio * velocidadAngular;
+  
+        document.getElementById('resultado-relacion').textContent = 'Relación entre velocidad angular y velocidad lineal: ' + relacionVelocidades.toFixed(2) + ' m/s';
+      }
+  
+      function calcularCircunferenciaLongitudArco() {
+        var radioCircunferencia = parseFloat(document.getElementById('radio-circunferencia').value);
+        var anguloCircunferencia = parseFloat(document.getElementById('angulo-circunferencia').value);
+  
+        var circunferencia = 2 * Math.PI * radioCircunferencia;
+        var longitudArco = radioCircunferencia * anguloCircunferencia;
+  
+        document.getElementById('resultado-circunferencia').textContent = 'Circunferencia: ' + circunferencia.toFixed(2) + ' metros';
+        document.getElementById('resultado-longitud-arco').textContent = 'Longitud de arco: ' + longitudArco.toFixed(2) + ' metros';
+      }
+  </script>
 
-    <!-- Calculadora de Desplazamiento Angular -->
-    <div class="calculadora-mcu">
-        <h3>Calculadora de Desplazamiento Angular (\(\theta\))</h3>
-        <form id="calculo_theta_form">
-            {% csrf_token %}
-            <label for="velocidad_angular_theta">Velocidad Angular (\(\omega\)): </label>
-            <input type="text" id="velocidad_angular_theta" name="velocidad_angular_theta" required>
+</body>
+</html>
 
-            <label for="tiempo_theta">Tiempo (s): </label>
-            <input type="text" id="tiempo_theta" name="tiempo_theta" required>
-
-            <button type="button" onclick="calcularDesplazamientoAngular()">Calcular</button>
-        </form>
-        <h4>RESULTADO:</h4>
-        <p id="resultado_theta">Desplazamiento Angular (\(\theta\)): </p>
-    </div>
-
-    <script>
-        function calcularVelocidadLineal() {
-            var radio_v = parseFloat(document.getElementById('radio_v').value);
-            var velocidad_angular_v = parseFloat(document.getElementById('velocidad_angular_v').value);
-
-            var velocidad_lineal = velocidad_angular_v * radio_v;
-
-            document.getElementById('resultado_v').innerText = 'Velocidad Lineal (\(v\)): ' + velocidad_lineal.toFixed(2) + ' m/s';
-        }
-
-        function calcularVelocidadAngular() {
-            var radio_omega = parseFloat(document.getElementById('radio_omega').value);
-            var periodo_omega = parseFloat(document.getElementById('periodo_omega').value);
-
-            var velocidad_angular = 2 * Math.PI / periodo_omega;
-
-            document.getElementById('resultado_omega').innerText = 'Velocidad Angular (\(\omega\)): ' + velocidad_angular.toFixed(2) + ' rad/s';
-        }
-
-        function calcularFrecuencia() {
-            var periodo_frecuencia = parseFloat(document.getElementById('periodo_frecuencia').value);
-            var frecuencia = 1 / periodo_frecuencia;
-
-            document.getElementById('resultado_frecuencia').innerText = 'Frecuencia (\(f\)): ' + frecuencia.toFixed(2) + ' Hz';
-        }
-
-        function calcularAceleracionCentripeta() {
-            var radio_ac = parseFloat(document.getElementById('radio_ac').value);
-            var velocidad_ac = parseFloat(document.getElementById('velocidad_ac').value);
-
-            var aceleracion_centrípeta = Math.pow(velocidad_ac, 2) / radio_ac;
-
-            document.getElementById('resultado_ac').innerText = 'Aceleración Centrípeta (\(a_c\)): ' + aceleracion_centrípeta.toFixed(2) + ' m/s²';
-        }
-
-        function calcularDesplazamientoAngular() {
-            var velocidad_angular_theta = parseFloat(document.getElementById('velocidad_angular_theta').value);
-            var tiempo_theta = parseFloat(document.getElementById('tiempo_theta').value);
-
-            var desplazamiento_angular = velocidad_angular_theta * tiempo_theta;
-
-            document.getElementById('resultado_theta').innerText = 'Desplazamiento Angular (\(\theta\)): ' + desplazamiento_angular.toFixed(2) + ' rad';
-        }
-    </script>
 
 {% endblock %}
 
