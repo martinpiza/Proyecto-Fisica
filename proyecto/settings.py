@@ -20,6 +20,7 @@ INSTALLED_APPS = [
     'aplicacion_fisica',
     'proyecto',
     'whitenoise.runserver_nostatic',
+    'bootstrap5',
 ]
 
 MIDDLEWARE = [
