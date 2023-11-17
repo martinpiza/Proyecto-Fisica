@@ -1,25 +1,14 @@
-body {
-    font-family: Arial, sans-serif;
+.bd-navbar {
+    padding: .75rem 0;
+    background-color: #7952b3;
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15), inset 0 -1px 0 rgba(0, 0, 0, 0.15);
 }
 
-nav {
-    background-color: #000000;
-    color: #fff;
-    padding: 10px;
+.logo {
+    color: orange;
+    transition: color .7s;
 }
 
-nav ul {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-}
-
-nav ul li {
-    display: inline;
-    margin-right: 20px;
-}
-
-a {
-    color: #fff;
-    text-decoration: none;
+.logo:hover {
+    color: greenyellow;
 }
