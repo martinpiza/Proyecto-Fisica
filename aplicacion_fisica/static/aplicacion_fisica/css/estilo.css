@@ -1,3 +1,11 @@
+body {
+    /*background-color: rgba(128, 128, 128, 0.2);*/
+    background-image: url("static/aplicacion_fisica/img/body.jpg");
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    background-attachment: fixed;
+}
+
 .bd-navbar {
     padding: .75rem 0;
     background-color: #7952b3;
@@ -11,4 +19,54 @@
 
 .logo:hover {
     color: greenyellow;
+}
+
+.contenedor {
+    max-width: 1200px;
+    margin: 3rem auto;
+    padding: 3rem;
+    /*border: solid #495057;
+    border-radius: 0.375rem;*/
+    background-color: #fff;
+    box-shadow: 0px 5px 10px #010113;
+    border-radius: 0.5rem;
+}
+
+.h3 {
+    text-align: center;
+    color: #d63384;
+    font-weight: bold;
+    font-size: 2rem;
+    margin-bottom: 2rem;
+}
+
+.h4 {
+    color: #0f5132;
+    font-weight: bold;
+}
+
+.texto-h1 {
+    color: #fff;
+}
+
+.h1 {
+    box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.5);
+    padding: 1rem;
+    border-radius: 1.2rem;
+    background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#0272a7), to(#013953));
+    margin-bottom: 2rem;
+}
+
+.subtitulo {
+    box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.5);
+    padding: 0.5rem 1.5rem;
+    border-radius: .5rem;
+    /*background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#0272a7), to(#013953));*/
+    margin-bottom: 2rem;
+    display: inline-block;
+    color: #dc3545;
+}
+
+p {
+    font-size: 1.05rem;
 }

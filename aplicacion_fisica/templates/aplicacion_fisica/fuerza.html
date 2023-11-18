@@ -2,33 +2,41 @@
 {% extends 'aplicacion_fisica/index.html' %}
 
 {% block content %}
-    <h2>Fuerza</h2>
+  <!-- <h2>Fuerza</h2> -->
 
-    <!-- Calculadora de Fuerza -->
-    <div class="calculadora-fuerza">
-        <h3>Calculadora de Fuerza (\(F\))</h3>
-        <form id="calculo_fuerza_form" onsubmit="calcularFuerza(); return false;">
-            {% csrf_token %}
-            <label for="masa_fuerza">Masa (kg):</label>
+  <!-- Calculadora de Fuerza -->
+  <div class="contenedor">
+    <h3 class="h3">Calculadora de Fuerza (\(F\))</h3>
+    <form id="calculo_fuerza_form" onsubmit="calcularFuerza(); return false;">
+      {% csrf_token %}
+      <!--    <label for="masa_fuerza">Masa (kg):</label>
             <input type="text" id="masa_fuerza" name="masa_fuerza" required>
-
             <label for="aceleracion_fuerza">Aceleración (\(a\)): </label>
             <input type="text" id="aceleracion_fuerza" name="aceleracion_fuerza" required>
-
             <button type="submit">Calcular</button>
-        </form>
-        <h4>RESULTADO:</h4>
-        <p id="resultado_fuerza">Fuerza (\(F\)): </p>
-    </div>
+        -->
+      <div class="form-floating mb-3">
+        <input type="text" class="form-control" id="masa_fuerza" name="masa_fuerza" placeholder="Masa" required />
+        <label for="masa_fuerza">Masa</label>
+      </div>
+      <div class="form-floating mb-3">
+        <input type="text" class="form-control" id="aceleracion_fuerza" name="aceleracion_fuerza" placeholder="Aceleracion" required />
+        <label for="aceleracion_fuerza">Aceleracion</label>
+      </div>
+      <div class="d-grid gap-2 col-6 mx-auto">
+        <button class="btn btn-primary btn-lg" type="submit">Calcular</button>
+      </div>
+    </form>
+    <h4>Resultado:</h4>
+    <p id="Resultado_fuerza">Fuerza (\(F\)):</p>
+  </div>
 
-    <script>
-        function calcularFuerza() {
-            var masa_fuerza = parseFloat(document.getElementById('masa_fuerza').value);
-            var aceleracion_fuerza = parseFloat(document.getElementById('aceleracion_fuerza').value);
-            var fuerza_calculada = masa_fuerza * aceleracion_fuerza;
-            document.getElementById('resultado_fuerza').innerText = 'Fuerza (\(F\)): ' + fuerza_calculada.toFixed(2) + ' N';
-        }
-    </script>
-
+  <script>
+    function calcularFuerza() {
+      var masa_fuerza = parseFloat(document.getElementById('masa_fuerza').value)
+      var aceleracion_fuerza = parseFloat(document.getElementById('aceleracion_fuerza').value)
+      var fuerza_calculada = masa_fuerza * aceleracion_fuerza
+      document.getElementById('Resultado_fuerza').innerText = 'Fuerza ((F)): ' + fuerza_calculada.toFixed(2) + ' N'
+    }
+  </script>
 {% endblock %}
-
