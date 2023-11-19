@@ -5,6 +5,10 @@ from .models import Articulo
 def index(request):
     return render(request, 'aplicacion_fisica/index.html')
 
+def inicio(request):
+    articulos = Articulo.objects.filter(titulo__icontains='inico')
+    return render(request, 'aplicacion_fisica/inicio.html', {'articulos': articulos})
+
 def movimiento_circular(request):
     articulos = Articulo.objects.filter(titulo__icontains='movimiento circular')
     return render(request, 'aplicacion_fisica/movimiento_circular.html', {'articulos': articulos})
