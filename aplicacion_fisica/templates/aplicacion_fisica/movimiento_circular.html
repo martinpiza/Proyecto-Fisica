@@ -8,11 +8,38 @@
       <meta charset="UTF-8" />
       <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <title>Calculadoras de Movimiento Circular Uniforme (MCU)</title>
+      <style>
+        body {
+            margin: 10px;
+          }
+      </style>
     </head>
     <body>
       <div class="contenedor">
         <h1 class="text-center texto-h1 h1">Calculadoras de Movimiento Circular Uniforme (MCU)</h1>
         <p>El Movimiento Circular Uniforme (MCU) es un tipo de movimiento en el cual un objeto se desplaza en una trayectoria circular con velocidad constante.</p>
+
+        <!-- Calculadora de Velocidad Lineal -->
+        <section class="mb-4">
+          <h2 class="subtitulo">Calculadora de Velocidad Tangencial (v)</h2>
+          <p>Calcula la velocidad lineal en función del radio y la velocidad angular.</p>
+          <p>v = w * r</p>
+          <div class="form-floating mb-3">
+            <input type="number" class="form-control" id="radio-velocidad" step="any" />
+            <label for="radio-velocidad">Radio (en metros):</label>
+          </div>
+
+          <div class="form-floating mb-3">
+            <input type="number" class="form-control" id="velocidad-angular-velocidad" step="any" />
+            <label for="velocidad-angular-velocidad">Velocidad Angular (en radianes por segundo):</label>
+          </div>
+          <div class="d-grid gap-2 col-6 mx-auto">
+            <button class="btn btn-primary btn-lg" onclick="calcularVelocidadLineal()">Calcular</button>
+          </div>
+
+          <p id="resultado-velocidad"></p>
+        </section>
+
 
         <!-- Calculadora del Radio -->
         <section class="mb-4">
@@ -35,25 +62,25 @@
           <p id="resultado-radio"></p>
         </section>
 
-        <!-- Calculadora de Velocidad Lineal -->
+        <!-- Calculadora de Velocidad Angular -->
         <section class="mb-4">
-          <h2 class="subtitulo">Calculadora de Velocidad Lineal (v)</h2>
-          <p>Calcula la velocidad lineal en función del radio y la velocidad angular.</p>
-          <p>v = w * r</p>
+          <h2 class="subtitulo">Calculadora de Velocidad Angular (w)</h2>
+          <p>Calcula la velocidad angular en función de la velocidad lineal y el radio.</p>
+          <p>w = v/r</p>
           <div class="form-floating mb-3">
-            <input type="number" class="form-control" id="radio-velocidad" step="any" />
-            <label for="radio-velocidad">Radio (en metros):</label>
+            <input type="number" class="form-control" id="velocidad-lineal-angular" step="any" />
+            <label for="velocidad-lineal-angular">Velocidad Lineal (en m/s):</label>
           </div>
 
           <div class="form-floating mb-3">
-            <input type="number" class="form-control" id="velocidad-angular-velocidad" step="any" />
-            <label for="velocidad-angular-velocidad">Velocidad Angular (en radianes por segundo):</label>
+            <input type="number" class="form-control" id="radio-angular" step="any" />
+            <label for="radio-angular">Radio (en metros):</label>
           </div>
           <div class="d-grid gap-2 col-6 mx-auto">
-            <button class="btn btn-primary btn-lg" onclick="calcularVelocidadLineal()">Calcular</button>
+            <button class="btn btn-primary btn-lg" onclick="calcularVelocidadAngular()">Calcular</button>
           </div>
 
-          <p id="resultado-velocidad"></p>
+          <p id="resultado-angular"></p>
         </section>
 
         <!-- Calculadora de Aceleración Centrípeta -->
@@ -114,27 +141,6 @@
 
           <p id="resultado-periodo"></p>
           <p id="resultado-frecuencia"></p>
-        </section>
-
-        <!-- Calculadora de Velocidad Angular -->
-        <section class="mb-4">
-          <h2 class="subtitulo">Calculadora de Velocidad Angular (w)</h2>
-          <p>Calcula la velocidad angular en función de la velocidad lineal y el radio.</p>
-          <p>w = v/r</p>
-          <div class="form-floating mb-3">
-            <input type="number" class="form-control" id="velocidad-lineal-angular" step="any" />
-            <label for="velocidad-lineal-angular">Velocidad Lineal (en m/s):</label>
-          </div>
-
-          <div class="form-floating mb-3">
-            <input type="number" class="form-control" id="radio-angular" step="any" />
-            <label for="radio-angular">Radio (en metros):</label>
-          </div>
-          <div class="d-grid gap-2 col-6 mx-auto">
-            <button class="btn btn-primary btn-lg" onclick="calcularVelocidadAngular()">Calcular</button>
-          </div>
-
-          <p id="resultado-angular"></p>
         </section>
 
         <!-- Calculadora de Desplazamiento Angular -->
