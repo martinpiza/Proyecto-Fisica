@@ -9,7 +9,7 @@ body {
 
 .bd-navbar {
     padding: .75rem 0;
-    background-color: #7952b3;
+    background-color: #0051AD;
     box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15), inset 0 -1px 0 rgba(0, 0, 0, 0.15);
 }
 
@@ -71,4 +71,11 @@ body {
 
 p {
     font-size: 1.05rem;
+}
+
+.nav-item {
+    position: relative;
+    display: inline-block;
+    color: rgb(255, 255, 255)0f0;
+    font-weight: 1000;
 }

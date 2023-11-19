@@ -2,11 +2,34 @@
 {% extends 'aplicacion_fisica/index.html' %}
 
 {% block content %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Calculadora de Fuerza</title>
+  <style>
+    body {
+        margin: 10px;
+      }
+  </style>
+</head>
+<body>
   <!-- <h2>Fuerza</h2> -->
 
   <!-- Calculadora de Fuerza -->
   <div class="contenedor">
-    <h3 class="h3">Calculadora de Fuerza (\(F\))</h3>
+    <h2 class="text-center h1 texto-h1">Concepto de Fuerza</h2>
+    <p>
+        En el ámbito de la física, la fuerza es una magnitud vectorial que describe la interacción entre dos cuerpos. Esta interacción puede modificar el estado de movimiento o de reposo de un objeto, influenciando su velocidad y dirección. Según la segunda ley del movimiento de Newton, la fuerza neta aplicada a un objeto es igual al producto de su masa y su aceleración (F = m * a).
+      </p>
+      <p>
+        La fuerza puede manifestarse de diversas maneras, como la fuerza gravitacional que atrae los objetos hacia la Tierra, la fuerza electromagnética que actúa entre partículas cargadas eléctricamente, y las fuerzas nucleares que operan a nivel subatómico. Estas fuerzas son fundamentales para entender el comportamiento de objetos en el universo, desde la caída de una manzana hasta la órbita de los planetas alrededor del sol.
+      </p>
+      <p>
+        Además de su significado en física, el concepto de fuerza se extiende a otras áreas de la vida, como la fuerza de voluntad que impulsa a las personas a alcanzar metas, o la fuerza emocional que les permite superar desafíos. La comprensión de la fuerza y su aplicación práctica es esencial en diversos campos, desde la ingeniería y la ciencia hasta la vida cotidiana.
+      </p>
+    <h3 class="h3">Calculadora de Fuerza</h3>
     <form id="calculo_fuerza_form" onsubmit="calcularFuerza(); return false;">
       {% csrf_token %}
       <!--    <label for="masa_fuerza">Masa (kg):</label>
@@ -39,4 +62,6 @@
       document.getElementById('Resultado_fuerza').innerText = 'Fuerza ((F)): ' + fuerza_calculada.toFixed(2) + ' N'
     }
   </script>
+</body>
+</html>
 {% endblock %}
