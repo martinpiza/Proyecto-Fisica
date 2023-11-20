@@ -107,7 +107,7 @@
         <section class="mb-4">
           <h2 class="subtitulo">Calculadora de Fuerza Centrípeta (Fc)</h2>
           <p>Calcula la fuerza centrípeta en función de la masa, la velocidad angular y el radio.</p>
-          <p>Fc = m * v^2/r</p>
+          <p>Fc = m * cf^2/r</p>
           <div class="form-floating mb-3">
             <input type="number" class="form-control" id="masa-fuerza" step="any" />
             <label for="masa-fuerza">Masa (en kg):</label>
@@ -115,7 +115,7 @@
 
           <div class="form-floating mb-3">
             <input type="number" class="form-control" id="radio-fuerza" step="any" />
-            <label for="radio-fuerza">Radio (en metros):</label>
+            <label for="radio-fuerza">Fuerza Centripeta (m/s^2):</label>
           </div>
           <div class="d-grid gap-2 col-6 mx-auto">
             <button class="btn btn-primary btn-lg" onclick="calcularFuerzaCentripeta()">Calcular</button>
@@ -238,9 +238,9 @@
         
         function calcularFuerzaCentripeta() {
           var masa = parseFloat(document.getElementById('masa-fuerza').value)
-          var radio = parseFloat(document.getElementById('radio-fuerza').value)
+          var aceleracionCentripeta = parseFloat(document.getElementById('radio-fuerza').value)
         
-          var fuerzaCentripeta = masa * Math.pow(2 * Math.PI, 2) * radio
+          var fuerzaCentripeta = masa * aceleracionCentripeta
         
           document.getElementById('resultado-fuerza').textContent = 'Fuerza Centrípeta: ' + fuerzaCentripeta.toFixed(2) + ' Newtons'
         }
