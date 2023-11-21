@@ -2,313 +2,241 @@
 {% extends 'aplicacion_fisica/index.html' %}
 
 {% block content %}
-<!DOCTYPE html>
-<html lang="es">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Leyes de Newton</title>
-  <style>
-      body {
-          margin: 10px;
+  <!DOCTYPE html>
+  <html lang="es">
+    <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Leyes de Newton</title>
+      <style>
+        .animacion {
+          width: 250px;
+          height: 250px;
+          background-color: #fff;
+          position: relative;
+          margin: 20px 0;
+          overflow: hidden;
         }
-    .animacion {
-      width: 200px;
-      height: 200px;
-      background-color: #fff;
-      position: relative;
-      margin: 20px 0;
-      overflow: hidden;
-    }
 
-    .objeto {
-      width: 50px;
-      height: 50px;
-      background-color: #3498db;
-      position: absolute;
-      border-radius: 50%;
-      box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-      animation-timing-function: ease-in-out;
-    }
+        .objeto {
+          width: 50px;
+          height: 50px;
+          background-color: #3498db;
+          position: absolute;
+          border-radius: 50%;
+          box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+          animation-timing-function: ease-in-out;
+        }
 
-    @keyframes mover {
-      0%, 100% {
-        transform: translateX(0);
-      }
-      50% {
-        transform: translateX(150px);
-      }
-    }
+        @keyframes mover {
+          0%, 100% {
+            transform: translateX(0);
+          }
+          50% {
+            transform: translateX(150px);
+          }
+        }
 
-    @keyframes acelerar {
-      0%, 100% {
-        width: 50px;
-        height: 50px;
-      }
-      50% {
-        width: 70px;
-        height: 70px;
-      }
-    }
+        @keyframes acelerar {
+          0%, 100% {
+            width: 50px;
+            height: 50px;
+          }
+          50% {
+            width: 70px;
+            height: 70px;
+          }
+        }
 
-    @keyframes reaccion {
-      0%, 100% {
-        transform: translateX(0);
-      }
-      50% {
-        transform: translateX(75px);
-      }
-    }
-  </style>
-</head>
-<body>
-</body>
-  <div class="contenedor">
-    <h1 class="text-center h1 texto-h1">Leyes de Newton</h1>
-    <p>Las leyes de Newton son tres principios fundamentales que describen el movimiento de los cuerpos. Fueron formuladas por Sir Isaac Newton y constituyen la base de la mecánica clásica.</p>
-
-    <!-- Ley de Newton I -->
-    <div class="ley-newton">
-      <h3 class="subtitulo">Ley de Newton I - Ley de la inercia</h3>
-      <p>
-        <strong>Enunciado:</strong> La Primera Ley de Newton, también conocida como la Ley de la Inercia, establece que un objeto permanecerá en reposo o en movimiento rectilíneo uniforme a menos que una fuerza externa neta actúe sobre él. En la animación, el objeto no mueve, indicando que no hay una fuerza neta actuando sobre él.
-      </p>
-      <div class="animacion">
-        <div class="objeto"></div>
-      </div>
-      <!-- Calculadora para Ley de Newton I -->
-      <div class="calculadora-ley">
+        @keyframes reaccion {
+          0%, 100% {
+            transform: translateX(0);
+          }
+          50% {
+            transform: translateX(75px);
+          }
+        }
+      </style>
+    </head>
+    <body>
+      <div class="contenedor">
+        <h1 class="text-center h1 texto-h1">Leyes de Newton</h1>
+        <div class="text-center mb-3">
+          <img src="https://i.gifer.com/6Cw.gif" alt="Newton" srcset="">
+        </div>
+        <p>Las leyes de Newton son tres principios fundamentales que describen el movimiento de los cuerpos. Fueron formuladas por Sir Isaac Newton y constituyen la base de la mecánica clásica.</p>
+        <!-- Ley de Newton I -->
+        <div class="ley-newton">
+          <h3 class="subtitulo">Ley de Newton I - Ley de la inercia</h3>
+          <p>
+            <strong>Enunciado:</strong> La Primera Ley de Newton, también conocida como la Ley de la Inercia, establece que un objeto permanecerá en reposo o en movimiento rectilíneo uniforme a menos que una fuerza externa neta actúe sobre él. En la animación, el objeto no mueve, indicando que no hay una fuerza neta actuando sobre él.
+          </p>
+          <div class="d-flex justify-content-center">
+            <div class="animacion sombra-div" style="height: 170px;">
+              <div class="objeto"></div>
+            </div>
+            <div class="leyes-n sombra-div" style="height: 170px;">
+              <img width="100%" height="100%" src="https://i0.wp.com/i1120.photobucket.com/albums/l484/forumcloudsdale/Sin-ttulo-1-1.gif" alt="" srcset="">
+            </div>
+            <div class="leyes-n sombra-div" style="height: 170px;">
+              <img width="100%" height="100%" src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3f/Gifbola1.gif/220px-Gifbola1.gif" alt="" srcset="">
+            </div>
+          </div>
+        </div>
+        <!-- Calculadora para Ley de Newton I -->
         <h4 class="text-success mb-3">Calculadora para Ley de Newton I</h4>
-        <form class="mb-3" id="ley_newton_i_form">
-          {% csrf_token %}
-          <!-- Calculadora para Masa -->
-<div class="calculadora-ley">
-  <h4 class="text-success mb-3">Calculadora para Masa</h4>
-  <form class="mb-3" id="calcular_masa_form">
-    {% csrf_token %}
-    <div class="form-floating mb-3">
-      <input type="text" class="form-control" id="fuerza_neta_masa" name="fuerza_neta_masa" required />
-      <label for="fuerza_neta_masa">Fuerza Neta (N)</label>
-    </div>
-    <div class="form-floating mb-3">
-      <input type="text" id="aceleracion_masa" class="form-control" name="aceleracion_masa" required />
-      <label for="aceleracion_masa">Aceleración (\(a\))</label>
-    </div>
-    <div class="d-grid gap-2 col-6 mx-auto">
-      <button type="button" class="btn btn-primary btn-lg" onclick="calcularMasa()">Calcular</button>
-    </div>
-  </form>
-  <h4>Resultado:</h4>
-  <p id="resultado_masa">Masa (kg):</p>
-</div>
-
-<!-- Calculadora para Aceleración -->
-<div class="calculadora-ley">
-  <h4 class="text-success mb-3">Calculadora para Aceleración</h4>
-  <form class="mb-3" id="calcular_aceleracion_form">
-    {% csrf_token %}
-    <div class="form-floating mb-3">
-      <input type="text" id="fuerza_neta_aceleracion" class="form-control" name="fuerza_neta_aceleracion" required />
-      <label for="fuerza_neta_aceleracion">Fuerza Neta (N)</label>
-    </div>
-    <div class="form-floating mb-3">
-      <input type="text" id="masa_aceleracion" class="form-control" name="masa_aceleracion" required />
-      <label for="masa_aceleracion">Masa (kg)</label>
-    </div>
-    <div class="d-grid gap-2 col-6 mx-auto">
-      <button type="button" class="btn btn-primary btn-lg" onclick="calcularAceleracion()">Calcular</button>
-    </div>
-  </form>
-  <h4>Resultado:</h4>
-  <p id="resultado_aceleracion">Aceleración (\(a\)):</p>
-</div>
-
-<!-- Calculadora para Fuerza Neta -->
-<div class="calculadora-ley">
-  <h4 class="text-success mb-3">Calculadora para Fuerza Neta</h4>
-  <form class="mb-3" id="calcular_fuerza_neta_form">
-    {% csrf_token %}
-    <div class="form-floating mb-3">
-      <input type="text" id="masa_fuerza_neta" class="form-control" name="masa_fuerza_neta" required />
-      <label for="masa_fuerza_neta">Masa (kg)</label>
-    </div>
-    <div class="form-floating mb-3">
-      <input type="text" id="aceleracion_fuerza_neta" class="form-control" name="aceleracion_fuerza_neta" required />
-      <label for="aceleracion_fuerza_neta">Aceleración (\(a\))</label>
-    </div>
-    <div class="d-grid gap-2 col-6 mx-auto">
-      <button type="button" class="btn btn-primary btn-lg" onclick="calcularFuerzaNeta()">Calcular</button>
-    </div>
-  </form>
-  <h4>Resultado:</h4>
-  <p id="resultado_fuerza_neta">Fuerza Neta (N):</p>
-</div>
-        </form>
-      </div>
-    </div>
-
-    <!-- Ley de Newton II -->
-    <div class="ley-newton">
-      <h3 class="subtitulo">Ley de Newton II - Ley de la fuerza y la aceleración</h3>
-      <p>
-        <strong>Enunciado:</strong> La Segunda Ley de Newton establece que la fuerza neta aplicada a un objeto es igual al producto de su masa y su aceleración. En la animación, la fuerza aplicada al objeto causa una aceleración y un aumento en su tamaño, representando la relación entre fuerza, masa y aceleración.
-      </p>
-      <div class="animacion">
-        <div class="objeto" style="animation: mover 2s ease-in-out infinite, acelerar 2s ease-in-out infinite;"></div>
-      </div>
-      <!-- Calculadora para Ley de Newton II -->
-      <div class="calculadora-ley">
+        
+        <!-- Ley de Newton II -->
+        <div class="ley-newton">
+          <h3 class="subtitulo">Ley de Newton II - Ley de la fuerza y la aceleración</h3>
+          <p>
+            <strong>Enunciado:</strong> La Segunda Ley de Newton establece que la fuerza neta aplicada a un objeto es igual al producto de su masa y su aceleración. En la animación, la fuerza aplicada al objeto causa una aceleración y un aumento en su tamaño, representando la relación entre fuerza, masa y aceleración.
+          </p>
+          <div class="d-flex justify-content-center">
+            <div class="animacion sombra-div">
+              <div class="objeto" style="animation: mover 2s ease-in-out infinite, acelerar 2s ease-in-out infinite;"></div>
+            </div>
+            <div class="leyes-n sombra-div" style="width: 300px;">
+              <img width="100%" height="100%" src="https://j.gifs.com/vqbgJj.gif" alt="" srcset="">
+            </div>
+          </div>
+        </div>
+        <!-- Calculadora para Ley de Newton II -->
         <h4 class="text-success mb-3">Calculadora para Ley de Newton II</h4>
-        <form class="mb-3" id="ley_newton_ii_form">
-          {% csrf_token %}
-          <!-- Calculadora para Masa -->
-<div class="calculadora-ley">
-  <h4 class="text-success mb-3">Calculadora para Masa</h4>
-  <form class="mb-3" id="calcular_masa_form">
-    {% csrf_token %}
-    <div class="form-floating mb-3">
-      <input type="text" class="form-control" id="fuerza_neta_masa" name="fuerza_neta_masa" required />
-      <label for="fuerza_neta_masa">Fuerza Neta (N)</label>
-    </div>
-    <div class="form-floating mb-3">
-      <input type="text" id="aceleracion_masa" class="form-control" name="aceleracion_masa" required />
-      <label for="aceleracion_masa">Aceleración (\(a\))</label>
-    </div>
-    <div class="d-grid gap-2 col-6 mx-auto">
-      <button type="button" class="btn btn-primary btn-lg" onclick="calcularMasa()">Calcular</button>
-    </div>
-  </form>
-  <h4>Resultado:</h4>
-  <p id="resultado_masa">Masa (kg):</p>
-</div>
-
-<!-- Calculadora para Aceleración -->
-<div class="calculadora-ley">
-  <h4 class="text-success mb-3">Calculadora para Aceleración</h4>
-  <form class="mb-3" id="calcular_aceleracion_form">
-    {% csrf_token %}
-    <div class="form-floating mb-3">
-      <input type="text" id="fuerza_neta_aceleracion" class="form-control" name="fuerza_neta_aceleracion" required />
-      <label for="fuerza_neta_aceleracion">Fuerza Neta (N)</label>
-    </div>
-    <div class="form-floating mb-3">
-      <input type="text" id="masa_aceleracion" class="form-control" name="masa_aceleracion" required />
-      <label for="masa_aceleracion">Masa (kg)</label>
-    </div>
-    <div class="d-grid gap-2 col-6 mx-auto">
-      <button type="button" class="btn btn-primary btn-lg" onclick="calcularAceleracion()">Calcular</button>
-    </div>
-  </form>
-  <h4>Resultado:</h4>
-  <p id="resultado_aceleracion">Aceleración (\(a\)):</p>
-</div>
-
-<!-- Calculadora para Fuerza Neta -->
-<div class="calculadora-ley">
-  <h4 class="text-success mb-3">Calculadora para Fuerza Neta</h4>
-  <form class="mb-3" id="calcular_fuerza_neta_form">
-    {% csrf_token %}
-    <div class="form-floating mb-3">
-      <input type="text" id="masa_fuerza_neta" class="form-control" name="masa_fuerza_neta" required />
-      <label for="masa_fuerza_neta">Masa (kg)</label>
-    </div>
-    <div class="form-floating mb-3">
-      <input type="text" id="aceleracion_fuerza_neta" class="form-control" name="aceleracion_fuerza_neta" required />
-      <label for="aceleracion_fuerza_neta">Aceleración (\(a\))</label>
-    </div>
-    <div class="d-grid gap-2 col-6 mx-auto">
-      <button type="button" class="btn btn-primary btn-lg" onclick="calcularFuerzaNeta()">Calcular</button>
-    </div>
-  </form>
-  <h4>Resultado:</h4>
-  <p id="resultado_fuerza_neta">Fuerza Neta (N):</p>
-</div>
-        </form>
-      </div>
-    </div>
-
-    <!-- Ley de Newton III -->
-    <div class="ley-newton">
-      <h3 class="subtitulo">Ley de Newton III - Ley de acción y reacción</h3>
-      <p>
-        <strong>Enunciado:</strong> La Tercera Ley de Newton establece que por cada acción hay una reacción igual y opuesta. En la animación, dos objetos ejercen fuerzas iguales pero opuestas entre sí, demostrando la ley de acción y reacción.
-      </p>
-      <div class="animacion">
-      <div class="objeto" style="animation: reaccion 2s ease-in-out infinite;"></div>
-      <div class="objeto" style="animation: reaccion 2s ease-in-out infinite; transform: scaleX(-1);"></div>
-    </div>
-      <!-- Calculadora para Ley de Newton III -->
-      <div class="calculadora-ley">
-        <h4 class="text-success mb-3">Calculadora para Ley de Newton III</h4>
-        <form class="mb-3" id="ley_newton_iii_form">
-          {% csrf_token %}
-          <div class="form-floating mb-3">
-            <input type="text" id="fuerza_accion_ley_newton_iii" class="form-control" name="fuerza_accion_ley_newton_iii" required />
-            <label for="fuerza_accion_ley_newton_iii">Fuerza de Acción (N):</label>
+        <!-- Calculadora para Masa -->
+        <div class="calculadora-ley">
+          <h4 class="text-success mb-3">Calculadora para Masa</h4>
+          <form class="mb-3" id="calcular_masa_form">
+            {% csrf_token %}
+            <div class="form-floating mb-3">
+              <input type="text" class="form-control" id="fuerza_neta_masa" name="fuerza_neta_masa" required />
+              <label for="fuerza_neta_masa">Fuerza Neta (N)</label>
+            </div>
+            <div class="form-floating mb-3">
+              <input type="text" id="aceleracion_masa" class="form-control" name="aceleracion_masa" required />
+              <label for="aceleracion_masa">Aceleración (\(a\))</label>
+            </div>
+            <div class="d-grid gap-2 col-6 mx-auto">
+              <button type="button" class="btn btn-primary btn-lg" onclick="calcularMasa()">Calcular</button>
+            </div>
+          </form>
+          <h4>Resultado:</h4>
+          <p id="resultado_masa">Masa (kg):</p>
+        </div>
+        <!-- Calculadora para Aceleración -->
+        <div class="calculadora-ley">
+          <h4 class="text-success mb-3">Calculadora para Aceleración</h4>
+          <form class="mb-3" id="calcular_aceleracion_form">
+            {% csrf_token %}
+            <div class="form-floating mb-3">
+              <input type="text" id="fuerza_neta_aceleracion" class="form-control" name="fuerza_neta_aceleracion" required />
+              <label for="fuerza_neta_aceleracion">Fuerza Neta (N)</label>
+            </div>
+            <div class="form-floating mb-3">
+              <input type="text" id="masa_aceleracion" class="form-control" name="masa_aceleracion" required />
+              <label for="masa_aceleracion">Masa (kg)</label>
+            </div>
+            <div class="d-grid gap-2 col-6 mx-auto">
+              <button type="button" class="btn btn-primary btn-lg" onclick="calcularAceleracion()">Calcular</button>
+            </div>
+          </form>
+          <h4>Resultado:</h4>
+          <p id="resultado_aceleracion">Aceleración (\(a\)):</p>
+        </div>
+        <!-- Calculadora para Fuerza Neta -->
+        <div class="calculadora-ley">
+          <h4 class="text-success mb-3">Calculadora para Fuerza Neta</h4>
+          <form class="mb-3" id="calcular_fuerza_neta_form">
+            {% csrf_token %}
+            <div class="form-floating mb-3">
+              <input type="text" id="masa_fuerza_neta" class="form-control" name="masa_fuerza_neta" required />
+              <label for="masa_fuerza_neta">Masa (kg)</label>
+            </div>
+            <div class="form-floating mb-3">
+              <input type="text" id="aceleracion_fuerza_neta" class="form-control" name="aceleracion_fuerza_neta" required />
+              <label for="aceleracion_fuerza_neta">Aceleración (\(a\))</label>
+            </div>
+            <div class="d-grid gap-2 col-6 mx-auto">
+              <button type="button" class="btn btn-primary btn-lg" onclick="calcularFuerzaNeta()">Calcular</button>
+            </div>
+          </form>
+          <h4>Resultado:</h4>
+          <p id="resultado_fuerza_neta">Fuerza Neta (N):</p>
+        </div>
+        <!-- Ley de Newton III -->
+        <div class="ley-newton">
+          <h3 class="subtitulo">Ley de Newton III - Ley de acción y reacción</h3>
+          <p>
+            <strong>Enunciado:</strong> La Tercera Ley de Newton establece que por cada acción hay una reacción igual y opuesta. En la animación, dos objetos ejercen fuerzas iguales pero opuestas entre sí, demostrando la ley de acción y reacción.
+          </p>
+          <div class="d-flex justify-content-center">
+            <div class="animacion sombra-div">
+              <div class="objeto" style="animation: reaccion 2s ease-in-out infinite;"></div>
+              <div class="objeto" style="animation: reaccion 2s ease-in-out infinite; transform: scaleX(-1);"></div>
+            </div>
+            <div class="sombra-div" style="width: 350px; height: 250px; margin: 20px 0px 20px 50px ;">
+              <img width="100%" height="100%" src="https://steemitimages.com/p/7258xSVeJbKnFEnBwjKLhL15SoynbgJKpQxRd1uowX5LYsBEv3H9aoV2rp4Qdq92S7vqfndoKNJGQ8B81JDWMLVzukb2tiJ1grxHxiFzC7ZNDskuFHg2xDmhH6fqut8kbdUkEtY9WcW4V?format=match&mode=fit" alt="" srcset="">
+            </div>
           </div>
-          <div class="d-grid gap-2 col-6 mx-auto">
-            <button type="button" class="btn btn-primary btn-lg" onclick="calcularLeyNewtonIII()">Calcular</button>
-          </div>
-        </form>
-        <h4>Resultado:</h4>
-        <p id="Resultado_ley_newton_iii">Fuerza de Reacción (\(F_{\text{reacción}}\)):</p>
+        </div>
+        <!-- Calculadora para Ley de Newton III -->
+        <div class="calculadora-ley">
+          <h4 class="text-success mb-3">Calculadora para Ley de Newton III</h4>
+          <form class="mb-3" id="ley_newton_iii_form">
+            {% csrf_token %}
+            <div class="form-floating mb-3">
+              <input type="text" id="fuerza_accion_ley_newton_iii" class="form-control" name="fuerza_accion_ley_newton_iii" required />
+              <label for="fuerza_accion_ley_newton_iii">Fuerza de Acción (N):</label>
+            </div>
+            <div class="d-grid gap-2 col-6 mx-auto">
+              <button type="button" class="btn btn-primary btn-lg" onclick="calcularLeyNewtonIII()">Calcular</button>
+            </div>
+          </form>
+          <h4>Resultado:</h4>
+          <p id="Resultado_ley_newton_iii">Fuerza de Reacción (\(F_{\text{reacción}}\)):</p>
+        </div>
       </div>
-    </div>
+      <script>
+        function calcularLeyNewtonI() {
+          var fuerza_neta_ley_newton_i = parseFloat(document.getElementById('fuerza_neta_ley_newton_i').value)
+          var masa_ley_newton_i = parseFloat(document.getElementById('masa_ley_newton_i').value)
+          var aceleracion_ley_newton_i = fuerza_neta_ley_newton_i / masa_ley_newton_i
+          document.getElementById('Resultado_ley_newton_i').innerText = 'Aceleración ((a)): ' + aceleracion_ley_newton_i.toFixed(2) + ' m/s²'
+        }
+        
+        function calcularLeyNewtonII() {
+          var fuerza_neta_ley_newton_ii = parseFloat(document.getElementById('fuerza_neta_ley_newton_ii').value)
+          var masa_ley_newton_ii = parseFloat(document.getElementById('masa_ley_newton_ii').value)
+          var aceleracion_ley_newton_ii = fuerza_neta_ley_newton_ii / masa_ley_newton_ii
+          document.getElementById('Resultado_ley_newton_ii').innerText = 'Aceleración ((a)): ' + aceleracion_ley_newton_ii.toFixed(2) + ' m/s²'
+        }
+        
+        function calcularLeyNewtonIII() {
+          var fuerza_accion_ley_newton_iii = parseFloat(document.getElementById('fuerza_accion_ley_newton_iii').value)
+          document.getElementById('Resultado_ley_newton_iii').innerText = 'Fuerza de Reacción ((F_{\text{reacción}})): ' + fuerza_accion_ley_newton_iii.toFixed(2) + ' N'
+        }
 
-    <!-- Agrega aquí cualquier otra sección o descripción que desees -->
-  </div>
-  <script>
-    function calcularLeyNewtonI() {
-      var fuerza_neta_ley_newton_i = parseFloat(document.getElementById('fuerza_neta_ley_newton_i').value)
-      var masa_ley_newton_i = parseFloat(document.getElementById('masa_ley_newton_i').value)
-    
-      var aceleracion_ley_newton_i = fuerza_neta_ley_newton_i / masa_ley_newton_i
-    
-      document.getElementById('Resultado_ley_newton_i').innerText = 'Aceleración ((a)): ' + aceleracion_ley_newton_i.toFixed(2) + ' m/s²'
-    }
-    
-    function calcularLeyNewtonII() {
-      var fuerza_neta_ley_newton_ii = parseFloat(document.getElementById('fuerza_neta_ley_newton_ii').value)
-      var masa_ley_newton_ii = parseFloat(document.getElementById('masa_ley_newton_ii').value)
-    
-      var aceleracion_ley_newton_ii = fuerza_neta_ley_newton_ii / masa_ley_newton_ii
-    
-      document.getElementById('Resultado_ley_newton_ii').innerText = 'Aceleración ((a)): ' + aceleracion_ley_newton_ii.toFixed(2) + ' m/s²'
-    }
-    
-    function calcularLeyNewtonIII() {
-      var fuerza_accion_ley_newton_iii = parseFloat(document.getElementById('fuerza_accion_ley_newton_iii').value)
-    
-      document.getElementById('Resultado_ley_newton_iii').innerText = 'Fuerza de Reacción ((F_{\text{reacción}})): ' + fuerza_accion_ley_newton_iii.toFixed(2) + ' N'
-    }
-
-    function calcularMasa() {
-      var fuerza_neta_masa = parseFloat(document.getElementById('fuerza_neta_masa').value);
-      var aceleracion_masa = parseFloat(document.getElementById('aceleracion_masa').value);
-  
-      var masa_resultado = fuerza_neta_masa / aceleracion_masa;
-  
-      document.getElementById('resultado_masa').innerText = 'Masa (kg): ' + masa_resultado.toFixed(2);
-    }
-  
-    function calcularAceleracion() {
-      var fuerza_neta_aceleracion = parseFloat(document.getElementById('fuerza_neta_aceleracion').value);
-      var masa_aceleracion = parseFloat(document.getElementById('masa_aceleracion').value);
-  
-      var aceleracion_resultado = fuerza_neta_aceleracion / masa_aceleracion;
-  
-      document.getElementById('resultado_aceleracion').innerText = 'Aceleración (m/s²): ' + aceleracion_resultado.toFixed(2);
-    }
-  
-    function calcularFuerzaNeta() {
-      var masa_fuerza_neta = parseFloat(document.getElementById('masa_fuerza_neta').value);
-      var aceleracion_fuerza_neta = parseFloat(document.getElementById('aceleracion_fuerza_neta').value);
-  
-      var fuerza_neta_resultado = masa_fuerza_neta * aceleracion_fuerza_neta;
-  
-      document.getElementById('resultado_fuerza_neta').innerText = 'Fuerza Neta (N): ' + fuerza_neta_resultado.toFixed(2);
-    }
-  </script>
-</body>
-</html>
+        function calcularMasa() {
+          var fuerza_neta_masa = parseFloat(document.getElementById('fuerza_neta_masa').value);
+          var aceleracion_masa = parseFloat(document.getElementById('aceleracion_masa').value);
+          var masa_resultado = fuerza_neta_masa / aceleracion_masa;
+          document.getElementById('resultado_masa').innerText = 'Masa (kg): ' + masa_resultado.toFixed(2);
+        }
+      
+        function calcularAceleracion() {
+          var fuerza_neta_aceleracion = parseFloat(document.getElementById('fuerza_neta_aceleracion').value);
+          var masa_aceleracion = parseFloat(document.getElementById('masa_aceleracion').value);
+          var aceleracion_resultado = fuerza_neta_aceleracion / masa_aceleracion;
+          document.getElementById('resultado_aceleracion').innerText = 'Aceleración (m/s²): ' + aceleracion_resultado.toFixed(2);
+        }
+      
+        function calcularFuerzaNeta() {
+          var masa_fuerza_neta = parseFloat(document.getElementById('masa_fuerza_neta').value);
+          var aceleracion_fuerza_neta = parseFloat(document.getElementById('aceleracion_fuerza_neta').value);
+          var fuerza_neta_resultado = masa_fuerza_neta * aceleracion_fuerza_neta;
+          document.getElementById('resultado_fuerza_neta').innerText = 'Fuerza Neta (N): ' + fuerza_neta_resultado.toFixed(2);
+        }
+      </script>
+    </body>
+  </html>
 {% endblock %}

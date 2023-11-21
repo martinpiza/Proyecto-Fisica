@@ -7,6 +7,10 @@ body {
     background-attachment: fixed
 }
 
+input {
+    border: 1.5px solid #8f95b5 !important;
+}
+
 .bd-navbar {
     padding: .75rem 0;
     background-color: #0051AD;
@@ -99,4 +103,14 @@ p {
 .integrantes {
     list-style: none;
     padding-left: 0;
+}
+
+.leyes-n {
+    width: 250px;
+    height: 250px;
+    margin: 20px 0 20px 50px;
+}
+
+.sombra-div {
+    box-shadow: 0px 5px 10px rgb(0, 0, 0);
 }
