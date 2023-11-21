@@ -85,66 +85,7 @@
         </div>
         <!-- Calculadora para Ley de Newton I -->
         <h4 class="text-success mb-3">Calculadora para Ley de Newton I</h4>
-        <!-- Calculadora para Masa -->
-        <div class="calculadora-ley">
-          <h4 class="text-success mb-3">Calculadora para Masa</h4>
-          <form class="mb-3" id="calcular_masa_form">
-            {% csrf_token %}
-            <div class="form-floating mb-3">
-              <input type="text" class="form-control" id="fuerza_neta_masa" name="fuerza_neta_masa" required />
-              <label for="fuerza_neta_masa">Fuerza Neta (N)</label>
-            </div>
-            <div class="form-floating mb-3">
-              <input type="text" id="aceleracion_masa" class="form-control" name="aceleracion_masa" required />
-              <label for="aceleracion_masa">Aceleración (\(a\))</label>
-            </div>
-            <div class="d-grid gap-2 col-6 mx-auto">
-              <button type="button" class="btn btn-primary btn-lg" onclick="calcularMasa()">Calcular</button>
-            </div>
-          </form>
-          <h4>Resultado:</h4>
-          <p id="resultado_masa">Masa (kg):</p>
-        </div>
-        <!-- Calculadora para Aceleración -->
-        <div class="calculadora-ley">
-          <h4 class="text-success mb-3">Calculadora para Aceleración</h4>
-          <form class="mb-3" id="calcular_aceleracion_form">
-            {% csrf_token %}
-            <div class="form-floating mb-3">
-              <input type="text" id="fuerza_neta_aceleracion" class="form-control" name="fuerza_neta_aceleracion" required />
-              <label for="fuerza_neta_aceleracion">Fuerza Neta (N)</label>
-            </div>
-            <div class="form-floating mb-3">
-              <input type="text" id="masa_aceleracion" class="form-control" name="masa_aceleracion" required />
-              <label for="masa_aceleracion">Masa (kg)</label>
-            </div>
-            <div class="d-grid gap-2 col-6 mx-auto">
-              <button type="button" class="btn btn-primary btn-lg" onclick="calcularAceleracion()">Calcular</button>
-            </div>
-          </form>
-          <h4>Resultado:</h4>
-          <p id="resultado_aceleracion">Aceleración (\(a\)):</p>
-        </div>
-        <!-- Calculadora para Fuerza Neta -->
-        <div class="calculadora-ley">
-          <h4 class="text-success mb-3">Calculadora para Fuerza Neta</h4>
-          <form class="mb-3" id="calcular_fuerza_neta_form">
-            {% csrf_token %}
-            <div class="form-floating mb-3">
-              <input type="text" id="masa_fuerza_neta" class="form-control" name="masa_fuerza_neta" required />
-              <label for="masa_fuerza_neta">Masa (kg)</label>
-            </div>
-            <div class="form-floating mb-3">
-              <input type="text" id="aceleracion_fuerza_neta" class="form-control" name="aceleracion_fuerza_neta" required />
-              <label for="aceleracion_fuerza_neta">Aceleración (\(a\))</label>
-            </div>
-            <div class="d-grid gap-2 col-6 mx-auto">
-              <button type="button" class="btn btn-primary btn-lg" onclick="calcularFuerzaNeta()">Calcular</button>
-            </div>
-          </form>
-          <h4>Resultado:</h4>
-          <p id="resultado_fuerza_neta">Fuerza Neta (N):</p>
-        </div>
+        
         <!-- Ley de Newton II -->
         <div class="ley-newton">
           <h3 class="subtitulo">Ley de Newton II - Ley de la fuerza y la aceleración</h3>
